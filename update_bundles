@@ -29,11 +29,12 @@ require 'open-uri'
 
 bundles_dir = File.join(File.dirname(__FILE__), "bundle")
 
-FileUtils.cd(bundles_dir)
-
 puts "Trashing everything (lookout!)"
-Dir["*"].each {|d| FileUtils.rm_rf d }
+FileUtils.rm_rf bundles_dir
 FileUtils.rm_rf '/tmp/vim-peepopen'
+
+FileUtils.mkdir(bundles_dir)
+FileUtils.cd(bundles_dir)
 
 git_bundles.each do |url|
   dir = url.split('/').last.sub(/\.git$/, '')
