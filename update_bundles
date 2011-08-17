@@ -24,29 +24,53 @@ vim_org_scripts = [
   ["jquery",        "15752", "syntax"],
 ]
 
+rcfiles = %w{vimrc gvimrc}
+
 require 'fileutils'
 require 'open-uri'
 
-bundles_dir = File.join(File.dirname(__FILE__), "bundle")
+path = FileUtils.pwd.match(/^(\/Users\/[^\/]*)/)
+raise(ArgumentError, "must run this from within your user directory") unless path
+raise(ArgumentError, "can't be in subdirectories of the .vim folder") if FileUtils.pwd =~ /.+\/\.vim\/.+/
+userdir = path[1]
+vimdir = "#{userdir}/.vim"
+bundles_dir = File.join(vimdir, "bundle")
 
-puts "Trashing everything (lookout!)"
-FileUtils.rm_rf bundles_dir
-FileUtils.rm_rf '/tmp/vim-peepopen'
+if FileUtils.pwd =~ /\.vim/
+  puts "We're inside the vim directory already"
+  puts "Trashing all bundles (lookout!)"
+  FileUtils.rm_rf bundles_dir
+else
+  puts "Recreating .vim directory"
+  FileUtils.rm_rf vimdir
+  FileUtils.mkdir vimdir
+  puts "Copying this setup file, vimrc, and gvimrc files to the .vim directory"
+  FileUtils.cp __FILE__, "#{vimdir}/setup", :preserve => true
+  rcfiles.each { |rcfile| FileUtils.cp rcfile, "#{vimdir}/#{rcfile}" }
+end
 
+puts "Symlink dotfiles (delete old ones)"
+rcfiles.each do |rcfile|
+  FileUtils.rm_f("#{userdir}/.#{rcfile}")
+  FileUtils.ln_s("#{vimdir}/#{rcfile}", "#{userdir}/.#{rcfile}")
+end
+
+puts "Creating the bundles directory"
 FileUtils.mkdir(bundles_dir)
 FileUtils.cd(bundles_dir)
 
 git_bundles.each do |url|
   dir = url.split('/').last.sub(/\.git$/, '')
-  puts "  Unpacking #{url} into #{dir}"
+  puts "\nUnpacking #{url} into #{dir}"
   `git clone #{url} #{dir}`
   FileUtils.rm_rf(File.join(dir, ".git"))
 end
 
 
-puts "  Unpacking #{peepopen} into vim-peepopen"
-`git clone #{peepopen} /tmp/vim-peepopen`
-FileUtils.mv('/tmp/vim-peepopen/vim-peepopen/','vim-peepopen/')
+puts "\nUnpacking #{peepopen} into vim-peepopen"
+tmpfolder = "/tmp/vim-peepopen-#{Time.now.to_i}"
+`git clone #{peepopen} #{tmpfolder}`
+FileUtils.mv("#{tmpfolder}/vim-peepopen/",'vim-peepopen/')
 FileUtils.rm('vim-peepopen/README.md')
 
 vim_org_scripts.each do |name, script_id, script_type|
