@@ -44,9 +44,10 @@ else
   puts "Recreating .vim directory"
   FileUtils.rm_rf vimdir
   FileUtils.mkdir vimdir
-  puts "Copying this setup file, vimrc, and gvimrc files to the .vim directory"
+  puts "Copying this setup file, pathogen, vimrc, and gvimrc files to the .vim directory"
   FileUtils.cp __FILE__, "#{vimdir}/setup", :preserve => true
   rcfiles.each { |rcfile| FileUtils.cp rcfile, "#{vimdir}/#{rcfile}" }
+  FileUtils.cp_r "autoload", "#{vimdir}"
 end
 
 puts "Symlink dotfiles (delete old ones)"
