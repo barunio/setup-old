@@ -42,3 +42,9 @@ function StartTerm()
   setlocal listchars=tab:\ \ 
 endfunction
 
+" go to next window, round-robin 
+map <M-Tab> <C-W>w
+imap <M-Tab> <C-O><C-W>w
+map <M-S-Tab> <C-W>W
+imap <M-S-Tab> <C-O><C-W>W
+
