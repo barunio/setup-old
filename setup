@@ -13,7 +13,8 @@ git_bundles = [
   "git://github.com/tsaleh/vim-supertab.git",
   "git://github.com/tsaleh/vim-tcomment.git",
   "git://github.com/godlygeek/tabular.git",
-  "git://github.com/mileszs/ack.vim.git"
+  "git://github.com/mileszs/ack.vim.git",
+  "git://github.com/vim-scripts/bufkill.vim.git"
 ]
 
 peepopen = "git://github.com/topfunky/PeepOpen-EditorSupport.git"
@@ -22,6 +23,7 @@ vim_org_scripts = [
   ["IndexedSearch", "7062",  "plugin"],
   ["gist",          "15897", "plugin"],
   ["jquery",        "15752", "syntax"],
+  ["autoclose",     "9223",  "plugin"]
 ]
 
 rcfiles = %w{vimrc gvimrc}
