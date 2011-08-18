@@ -16,35 +16,37 @@ endif
 set fuoptions=maxhorz,maxvert
  
 " Command-][ to increase/decrease indentation
-vmap <D-]> >gv
-vmap <D-[> <gv
+map    <D-]>   >gv
+imap   <D-]>   >gv
+map    <D-[>   <gv
+imap   <D-[>   <gv
 
 " Command-T for PeepOpen
 macmenu &File.New\ Tab key=<D-T>
-map <D-t> <Plug>PeepOpen
+map             <D-t>   <Plug>PeepOpen
+imap            <D-t>   <C-[><Plug>PeepOpen
+
 
 " Command-Return for fullscreen
 macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
 
 " Command-Shift-F for Ack
 map <D-F> :Ack<space>
+imap <D-F> :Ack<space>
 
-" Command-T for PeepOpen
+" Command-W hurts my wrist. just use w instead
+map w <C-w>
+
+" Command-, toggles between insert and normal modes
+imap <D-,> <Esc>
+map <D-,> i
+
+" Command-o to open a file
 macmenu &File.Open\.\.\. key=<nop>
 map <D-o> :edit<space> 
 
-" Command-e for ConqueTerm
-map <D-e> :call StartTerm()<CR>
-
-" ConqueTerm wrapper
-function StartTerm()
-  execute 'ConqueTerm ' . $SHELL . ' --login'
-  setlocal listchars=tab:\ \ 
-endfunction
-
 " go to next window, round-robin 
-map <M-Tab> <C-W>w
-imap <M-Tab> <C-O><C-W>w
-map <M-S-Tab> <C-W>W
-imap <M-S-Tab> <C-O><C-W>W
-
+map    <M-Tab>     <C-W>w
+imap   <M-Tab>     <C-O><C-W>w
+map    <M-S-Tab>   <C-W>W
+imap   <M-S-Tab>   <C-O><C-W>W

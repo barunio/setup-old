@@ -83,7 +83,12 @@ command! -nargs=+ Cuc :!ack --no-heading --no-break <q-args> | cut -d':' -f1,2 |
 let g:html_indent_tags = 'li\|p'
 
 map <space> :
-cabbrev wego cd ~/wegowise
+cabbrev wego cd ~/wegowise<CR>:NERDTree<CR><C-W><Right> 
+
+" Tabular shortcuts
+noremap :t<bar> :Tab/<bar>
+noremap :t= :Tab/=
+noremap :t: :Tab/:
 
 set guifont=Monaco:h12
 
