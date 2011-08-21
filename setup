@@ -45,6 +45,13 @@ end
 puts "Trashing all bundles (lookout!)"
 FileUtils.rm_rf 'bundle'
 FileUtils.mkdir('bundle')
+
+puts "Making symbolic links for vimballs"
+Dir.entries('vimballs').each do |item|
+  next if ['.','..'].include?(item) || !File.directory?("vimballs/#{item}")
+  FileUtils.ln_s "vimballs/#{item}", "bundle/#{item}"
+end
+
 FileUtils.cd('bundle')
 
 git_bundles.each do |url|
