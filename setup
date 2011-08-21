@@ -32,36 +32,20 @@ rcfiles = %w{vimrc gvimrc}
 require 'fileutils'
 require 'open-uri'
 
-path = FileUtils.pwd.match(/^(\/Users\/[^\/]*)/)
-raise(ArgumentError, "must run this from within your user directory") unless path
-raise(ArgumentError, "can't be in subdirectories of the .vim folder") if FileUtils.pwd =~ /.+\/\.vim\/.+/
-userdir = path[1]
-vimdir = "#{userdir}/.vim"
-bundles_dir = File.join(vimdir, "bundle")
-
-if FileUtils.pwd =~ /\.vim/
-  puts "We're inside the vim directory already"
-  puts "Trashing all bundles (lookout!)"
-  FileUtils.rm_rf bundles_dir
-else
-  puts "Recreating .vim directory"
-  FileUtils.rm_rf vimdir
-  FileUtils.mkdir vimdir
-  puts "Copying this setup file, pathogen, vimrc, and gvimrc files to the .vim directory"
-  FileUtils.cp __FILE__, "#{vimdir}/setup", :preserve => true
-  rcfiles.each { |rcfile| FileUtils.cp rcfile, "#{vimdir}/#{rcfile}" }
-  FileUtils.cp_r "autoload", "#{vimdir}"
+unless path = FileUtils.pwd.match(/^\/Users\/[^\/]*\/\.vim$/)
+  raise ArgumentError, "you must clone the git repo directly into /Users/<username>/.vim/"
 end
 
 puts "Symlink dotfiles (delete old ones)"
 rcfiles.each do |rcfile|
-  FileUtils.rm_f("#{userdir}/.#{rcfile}")
-  FileUtils.ln_s("#{vimdir}/#{rcfile}", "#{userdir}/.#{rcfile}")
+  FileUtils.rm_f("../.#{rcfile}")
+  FileUtils.ln_s("#{path}/#{rcfile}", "../.#{rcfile}")
 end
 
-puts "Creating the bundles directory"
-FileUtils.mkdir(bundles_dir)
-FileUtils.cd(bundles_dir)
+puts "Trashing all bundles (lookout!)"
+FileUtils.rm_rf 'bundle'
+FileUtils.mkdir('bundle')
+FileUtils.cd('bundle')
 
 git_bundles.each do |url|
   dir = url.split('/').last.sub(/\.git$/, '')
