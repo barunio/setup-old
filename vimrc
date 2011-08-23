@@ -12,6 +12,12 @@ set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
+set autoindent
+set showmode
+set splitbelow
+set splitright
+set foldenable
+set laststatus=2
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -43,11 +49,6 @@ set expandtab
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
-
-" Local config
-if filereadable(".vimrc.local")
-  source .vimrc.local
-endif
 
 " Use Ack instead of Grep when available
 if executable("ack")
@@ -88,7 +89,7 @@ cabbrev wego cd ~/wegowise<CR>:NERDTree<CR><C-W><Right>
 " Tabular shortcuts
 noremap :t<bar> :Tab/<bar>
 noremap :t= :Tab/=
-noremap :t: :Tab/:
+noremap :t: :Tab/:\zs
 
 set guifont=Monaco:h12
 
@@ -101,4 +102,101 @@ endif
 if has("gui_macvim")
   let macvim_hig_shift_movement = 1
 endif
+
+cabbrev vimrc edit ~/.vimrc
+cabbrev gvimrc edit ~/.gvimrc
+cabbrev source so ~/.vimrc <bar> so ~/.gvimrc
+
+nmap cp :let @+ = expand('%:p')<CR>
+
+nmap ri" ci"<Esc><Right>"0P
+
+map t: :Tab/:\zs<CR>
+map t= :Tab/=<CR>
+map t\ :Tab/<bar><CR>
+map t, :Tab/,\zs<CR>
+
+
+
+" Display an error message.
+function! s:Warn(msg)
+  echohl ErrorMsg
+  echomsg a:msg
+  echohl NONE
+endfunction
+
+" Thanks to http://vim.wikia.com/wiki/Deleting_a_buffer_without_closing_the_window
+function s:Kwbd(kwbdStage)
+  if(a:kwbdStage == 1)
+    if(!buflisted(winbufnr(0)))
+      bd!
+      return
+    endif
+    let s:kwbdBufNum = bufnr("%")
+    let s:kwbdWinNum = winnr()
+    windo call s:Kwbd(2)
+    execute s:kwbdWinNum . 'wincmd w'
+    let s:buflistedLeft = 0
+    let s:bufFinalJump = 0
+    let l:nBufs = bufnr("$")
+    let l:i = 1
+    while(l:i <= l:nBufs)
+      if(l:i != s:kwbdBufNum)
+        if(buflisted(l:i))
+          let s:buflistedLeft = s:buflistedLeft + 1
+        else
+          if(bufexists(l:i) && !strlen(bufname(l:i)) && !s:bufFinalJump)
+            let s:bufFinalJump = l:i
+          endif
+        endif
+      endif
+      let l:i = l:i + 1
+    endwhile
+    if(!s:buflistedLeft)
+      if(s:bufFinalJump)
+        windo if(buflisted(winbufnr(0))) | execute "b! " . s:bufFinalJump | endif
+      else
+        enew
+        let l:newBuf = bufnr("%")
+        windo if(buflisted(winbufnr(0))) | execute "b! " . l:newBuf | endif
+      endif
+      execute s:kwbdWinNum . 'wincmd w'
+    endif
+    if(buflisted(s:kwbdBufNum) || s:kwbdBufNum == bufnr("%"))
+      execute "bd! " . s:kwbdBufNum
+    endif
+    if(!s:buflistedLeft)
+      set buflisted
+      set bufhidden=delete
+      set buftype=nofile
+      setlocal noswapfile
+    endif
+  else
+    if(bufnr("%") == s:kwbdBufNum)
+      let prevbufvar = bufnr("#")
+      if(prevbufvar > 0 && buflisted(prevbufvar) && prevbufvar != s:kwbdBufNum)
+        b #
+      else
+        bn
+      endif
+    endif
+  endif
+endfunction
+
+command! Kwbd call <SID>Kwbd(1)
+nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
+
+function CloseOrEmpty()
+  if winnr() == winnr('$')
+    if winnr() == 1
+      execute 'Kwbd'
+    elseif winnr() == 2 && exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1
+      execute 'Kwbd'
+    else
+      execute 'q'
+    end
+  else
+    execute 'q'
+  end
+endfunction
 
