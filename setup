@@ -9,7 +9,6 @@ git_bundles = [
   "git://github.com/tpope/vim-repeat.git",
   "git://github.com/tpope/vim-surround.git",
   "git://github.com/tpope/vim-vividchalk.git",
-  "git://github.com/tsaleh/vim-align.git",
   "git://github.com/tsaleh/vim-supertab.git",
   "git://github.com/tsaleh/vim-tcomment.git",
   "git://github.com/godlygeek/tabular.git",
@@ -45,12 +44,6 @@ end
 puts "Trashing all bundles (lookout!)"
 FileUtils.rm_rf 'bundle'
 FileUtils.mkdir('bundle')
-
-puts "Making symbolic links for vimballs"
-Dir.entries('vimballs').each do |item|
-  next if ['.','..'].include?(item) || !File.directory?("vimballs/#{item}")
-  FileUtils.ln_s "vimballs/#{item}", "bundle/#{item}"
-end
 
 FileUtils.cd('bundle')
 
