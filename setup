@@ -1,4 +1,43 @@
 #!/usr/bin/env ruby
+require 'fileutils'
+require 'open-uri'
+
+PATH = FileUtils.pwd
+unless pathmatch = PATH.match(/^(\/Users\/[^\/]*)\//)
+  raise ArgumentError, "you must clone the git repo to some location under your home directory"
+end
+HOME = pathmatch[1]
+TRASH = "#{HOME}/.Trash/dotfiles-#{Time.now.to_i}"
+FileUtils.mkdir(TRASH)
+
+def move_to_trash(object)
+  trash_to = File.join(TRASH, File.basename(object))
+  if File.exists?(object) && File.symlink?(object)
+    target = File.readlink(object)
+    return if block_given? && yield(target)
+    FileUtils.mv(target, trash_to) if File.exists?(target)
+  elsif File.exists?(object)
+    FileUtils.mv(object, trash_to) 
+  end
+  FileUtils.rm_f(object) # delete file, symlink or dead symlink
+end
+
+puts "Symlinking config files (deleting old ones!)"
+%w{zshrc zlogin vimrc gvimrc}.each do |dotfile|
+  source = File.join(PATH, dotfile)
+  dest = File.join(HOME, ".#{dotfile}")
+  move_to_trash(dest) { |symlink_target| symlink_target == source }
+  FileUtils.ln_s(source, dest) unless File.exists?(dest)
+end
+
+puts "trashing old .vim directory and creating a new one"
+move_to_trash File.join(HOME, '.vim')
+FileUtils.mkdir "#{HOME}/.vim"
+FileUtils.mkdir "#{HOME}/.vim/bundle"
+FileUtils.cd "#{HOME}/.vim/bundle"
+
+puts "symlinking pathogen"
+FileUtils.ln_s "#{PATH}/vim/autoload", "#{HOME}/.vim/autoload"
 
 # thanks, tammer: http://tammersaleh.com/posts/the-modern-vim-config-with-pathogen
 
@@ -27,34 +66,12 @@ vim_org_scripts = [
   ["autoclose",     "9223",  "plugin"]
 ]
 
-rcfiles = %w{vimrc gvimrc}
-
-require 'fileutils'
-require 'open-uri'
-
-unless path = FileUtils.pwd.match(/^\/Users\/[^\/]*\/\.vim$/)
-  raise ArgumentError, "you must clone the git repo directly into /Users/<username>/.vim/"
-end
-
-puts "Symlink dotfiles (delete old ones)"
-rcfiles.each do |rcfile|
-  FileUtils.rm_f("../.#{rcfile}")
-  FileUtils.ln_s("#{path}/#{rcfile}", "../.#{rcfile}")
-end
-
-puts "Trashing all bundles (lookout!)"
-FileUtils.rm_rf 'bundle'
-FileUtils.mkdir('bundle')
-
-FileUtils.cd('bundle')
-
 git_bundles.each do |url|
-  dir = url.split('/').last.sub(/\.git$/, '')
+  dir = url.split('/').last.sub(/\\\\.git$/, '')
   puts "\nUnpacking #{url} into #{dir}"
   `git clone #{url} #{dir}`
   FileUtils.rm_rf(File.join(dir, ".git"))
 end
-
 
 puts "\nUnpacking #{peepopen} into vim-peepopen"
 tmpfolder = "/tmp/vim-peepopen-#{Time.now.to_i}"
