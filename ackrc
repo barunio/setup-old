@@ -1,0 +1,9 @@
+--sort-files
+--type-add=ruby=.builder
+--type-add=ruby=.rake
+--type-add=ruby=.feature
+--type-set=haml=.haml
+--type-set=sass=.sass
+--type-set=txt=.txt
+--smart-case
+

@@ -1,0 +1,6 @@
+[user]
+  name = Barun Singh
+  email = bsingh@wegowise.com
+
+[push]
+  default = upstream
