@@ -17,6 +17,8 @@ set showmode
 set splitbelow
 set splitright
 set foldenable
+let ruby_fold=1
+set foldlevelstart=99
 set laststatus=2
 
 " Switch syntax highlighting on, when the terminal has colors
