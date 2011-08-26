@@ -23,7 +23,7 @@ def move_to_trash(object)
 end
 
 puts "Symlinking config files (deleting old ones!)"
-%w{zshrc zlogin vimrc gvimrc gitconfig ackrc gemrc}.each do |dotfile|
+%w{zshrc zlogin vimrc gvimrc gitconfig ackrc gemrc rvmrc}.each do |dotfile|
   source = File.join(PATH, dotfile)
   dest = File.join(HOME, ".#{dotfile}")
   move_to_trash(dest) { |symlink_target| symlink_target == source }
