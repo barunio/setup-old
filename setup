@@ -54,7 +54,8 @@ git_bundles = [
   "git://github.com/mileszs/ack.vim.git",
   "git://github.com/vim-scripts/bufkill.vim.git",
   "git://github.com/scrooloose/nerdtree",
-  "git://github.com/michaeljsmith/vim-indent-object.git"
+  "git://github.com/michaeljsmith/vim-indent-object.git",
+  "git://github.com/motemen/git-vim.git"
 ]
 
 peepopen = "git://github.com/topfunky/PeepOpen-EditorSupport.git"
