@@ -36,7 +36,7 @@ map! <D-t> <C-[><Plug>PeepOpen
 macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
 
 " Command-Shift-F for Ack
-nmap <D-F> :Ack<space>
+nmap <D-F> :Ack<space>-Q<space>
 smap <D-F> <Esc>:Ack<space>
 map! <D-F> <Esc>:Ack<space>
 
