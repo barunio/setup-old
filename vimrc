@@ -84,11 +84,6 @@ let g:html_indent_tags = 'li\|p'
 map <space> :
 cabbrev wego cd ~/wegowise<CR>:NERDTree<CR><C-W><Right> 
 
-" Tabular shortcuts
-noremap :t<bar> :Tab/<bar>
-noremap :t= :Tab/=
-noremap :t: :Tab/:\zs
-
 set guifont=Monaco:h12
 
 " Source the vimrc file after saving it
@@ -109,11 +104,10 @@ nmap cp :let @+ = expand('%:p')<CR>
 
 nmap ri" ci"<Esc><Right>"0P
 
-map t: :Tab/:\zs<CR>
-map t= :Tab/=<CR>
-map t\ :Tab/<bar><CR>
-map t, :Tab/,\zs<CR>
-
+map <leader>t: :Tab/:\zs<CR>
+map <leader>t= :Tab/=<CR>
+map <leader>t\ :Tab/<bar><CR>
+map <leader>t, :Tab/,\zs<CR>
 
 
 " Display an error message.
