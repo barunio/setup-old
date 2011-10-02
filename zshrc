@@ -40,11 +40,14 @@ setopt prompt_subst
 # prompt
 export PS1='[${SSH_CONNECTION+"%n@%m:"}%~] '
 
+# keep and save TONS of history
+export HISTSIZE=4096
+export SAVEHIST=1000
+export HISTFILE=~/.zhistory
 # ignore duplicate history entries
 setopt histignoredups
-
-# keep TONS of history
-export HISTSIZE=4096
+# append command to history file once executed
+setopt inc_append_history
 
 # automatically pushd
 setopt auto_pushd
