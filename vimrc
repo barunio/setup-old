@@ -84,8 +84,6 @@ command! -nargs=+ Cuc :!ack --no-heading --no-break <q-args> | cut -d':' -f1,2 |
 let g:html_indent_tags = 'li\|p'
 
 map <space> :
-cabbrev wego cd ~/wegowise<CR>:NERDTree<CR><C-W><Right>
-
 set guifont=Monaco:h12
 
 if has("gui_macvim")
@@ -193,3 +191,8 @@ command! Transpose mark a | s/\v\s*\|\s*/|\r|/g | normal ddkmb`addma
 " delete trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.gvimrc.local
+endif
