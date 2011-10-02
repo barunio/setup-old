@@ -16,6 +16,8 @@ set autoindent
 set showmode
 set splitbelow
 set splitright
+set nowrap
+set cc=80         " show a vertical line at 80 columns
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
