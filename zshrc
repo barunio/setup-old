@@ -8,8 +8,8 @@ compinit
 # automatically enter directories without cd
 setopt auto_cd
 
-# use vim as an editor
-export EDITOR=vim
+# use macvim as an editor
+export EDITOR='mvim -f'
 
 # aliases
 if [ -e "$HOME/.aliases" ]; then
