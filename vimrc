@@ -1,6 +1,6 @@
 " Needed on some linux distros.
 " see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
-filetype off 
+filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
@@ -84,15 +84,9 @@ command! -nargs=+ Cuc :!ack --no-heading --no-break <q-args> | cut -d':' -f1,2 |
 let g:html_indent_tags = 'li\|p'
 
 map <space> :
-cabbrev wego cd ~/wegowise<CR>:NERDTree<CR><C-W><Right> 
+cabbrev wego cd ~/wegowise<CR>:NERDTree<CR><C-W><Right>
 
 set guifont=Monaco:h12
-
-" Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-  autocmd bufwritepost .gvimrc source $MYGVIMRC 
-endif
 
 if has("gui_macvim")
   let macvim_hig_shift_movement = 1
@@ -180,7 +174,7 @@ endfunction
 command! Kwbd call <SID>Kwbd(1)
 nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 
-function CloseOrEmpty()
+function! CloseOrEmpty()
   if winnr() == winnr('$')
     if winnr() == 1
       execute 'Kwbd'
@@ -194,6 +188,7 @@ function CloseOrEmpty()
   end
 endfunction
 
+command! Transpose mark a | s/\v\s*\|\s*/|\r|/g | normal ddkmb`addma
 
 " delete trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e

@@ -7,14 +7,9 @@ set guioptions-=T
 " Use console dialogs
 set guioptions+=c
 
-" Local config
-if filereadable($HOME . "/.gvimrc.local")
-  source ~/.gvimrc.local
-endif
-
 " Fullscreen takes up entire screen
 set fuoptions=maxhorz,maxvert
- 
+
 " Command-][ to increase/decrease indentation
 nmap   <D-]>   mq^<C-V>>`q<Right><Right>
 imap   <D-]>   <Esc><D-]>i
@@ -53,7 +48,7 @@ macmenu &File.Open\.\.\. key=<nop>
 map <D-o> :edit<space>
 map! <D-o> <C-O><D-o>
 
-" go to next window, round-robin 
+" go to next window, round-robin
 map    <M-Tab>     <C-W>w
 imap   <M-Tab>     <C-O><C-W>w
 map    <M-S-Tab>   <C-W>W
@@ -61,13 +56,15 @@ imap   <M-S-Tab>   <C-O><C-W>W
 
 
 macmenu &File.Close key=<nop>
-map <silent> <D-w> <Esc>:call CloseOrEmpty()<CR>
+map  <silent> <D-w> <Esc>:call CloseOrEmpty()<CR>
 map! <silent> <D-w> <Esc>:call CloseOrEmpty()<CR>
 
-map <silent> <D-1> <Esc>:NERDTree<CR>
+map  <silent> <D-1> <Esc>:NERDTree<CR>
 map! <silent> <D-1> <Esc>:NERDTree<CR>
-map <silent> <D-2> <Esc>:call HideNERDTree()<CR>
+map  <silent> <D-2> <Esc>:call HideNERDTree()<CR>
 map! <silent> <D-2> <Esc>:call HideNERDTree()<CR>
+map  <silent> <D-3> <Esc>:NERDTreeFind<CR>
+map! <silent> <D-3> <Esc>:NERDTreeFind<CR>
 
 
 function HideNERDTree()
