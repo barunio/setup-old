@@ -192,3 +192,7 @@ function CloseOrEmpty()
   end
 endfunction
 
+
+" delete trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
