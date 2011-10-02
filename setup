@@ -17,13 +17,13 @@ def move_to_trash(object)
     return if block_given? && yield(target)
     FileUtils.mv(target, trash_to) if File.exists?(target)
   elsif File.exists?(object)
-    FileUtils.mv(object, trash_to) 
+    FileUtils.mv(object, trash_to)
   end
   FileUtils.rm_f(object) # delete file, symlink or dead symlink
 end
 
 puts "Symlinking config files (deleting old ones!)"
-%w{zshrc zlogin vimrc gvimrc gitconfig ackrc gemrc rvmrc}.each do |dotfile|
+%w{zshrc zlogin vimrc gvimrc gitconfig ackrc gemrc rvmrc rdebugrc}.each do |dotfile|
   source = File.join(PATH, dotfile)
   dest = File.join(HOME, ".#{dotfile}")
   move_to_trash(dest) { |symlink_target| symlink_target == source }
