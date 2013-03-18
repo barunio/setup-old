@@ -22,6 +22,12 @@ def move_to_trash(object)
   FileUtils.rm_f(object) # delete file, symlink or dead symlink
 end
 
+puts "trashing old .vim directory and installing vundle in a new one"
+move_to_trash File.join(HOME, '.vim')
+FileUtils.mkdir "#{HOME}/.vim"
+FileUtils.mkdir "#{HOME}/.vim/bundle"
+`git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+
 puts "Symlinking config files (deleting old ones!)"
 %w{zshrc aliases zlogin vimrc gvimrc gitconfig ackrc gemrc rvmrc rdebugrc}.each do |dotfile|
   source = File.join(PATH, dotfile)
