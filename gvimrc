@@ -21,15 +21,6 @@ imap   <D-[>   <Esc><D-[>i
 vmap   <D-[>   <gv
 smap   <D-[>   <C-O><<Esc>gv
 
-" Command-T for PeepOpen
-macmenu &File.New\ Tab key=<D-T>
-map  <D-t> <Plug>PeepOpen
-map! <D-t> <C-[><Plug>PeepOpen
-
-
-" Command-Return for fullscreen
-macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
-
 " Command-Shift-F for Ack
 nmap <D-F> :Ack<space>-Q<space>
 smap <D-F> <Esc>:Ack<space>
@@ -66,6 +57,9 @@ map! <silent> <D-2> <Esc>:call HideNERDTree()<CR>
 map  <silent> <D-3> <Esc>:NERDTreeFind<CR>
 map! <silent> <D-3> <Esc>:NERDTreeFind<CR>
 
+" map Ctrl-P to Commant-T
+map <D-t> :CtrlP<CR>
+imap <D-t> <ESC>:CtrlP<CR>
 
 function HideNERDTree()
   if exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1

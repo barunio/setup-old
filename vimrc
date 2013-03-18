@@ -1,32 +1,46 @@
-" Needed on some linux distros.
-" see http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
-filetype off
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+filetype off      " disable file type detection
+set nocompatible  " use Vim settings, rather then Vi settings
 
-set nocompatible  " Use Vim settings, rather then Vi settings
-set nobackup
-set nowritebackup
-set history=50
+" set up vundle
+set rtp+=~/.vim/bundle/vundle/ " add to run time path
+call vundle#rc()
+
+" let Vundle manage Vundle (required!)
+Bundle 'gmarik/vundle'
+
+Bundle 'git://github.com/kien/ctrlp.vim.git'
+Bundle 'git://github.com/altercation/vim-colors-solarized.git'
+Bundle 'git://github.com/scrooloose/nerdtree.git'
+Bundle 'git://github.com/tpope/vim-surround.git'
+Bundle 'git://github.com/ervandew/supertab.git'
+Bundle 'git://github.com/mileszs/ack.vim.git'
+Bundle 'git://github.com/godlygeek/tabular.git'
+Bundle 'git://github.com/tpope/vim-repeat.git'
+Bundle 'git://github.com/vim-scripts/tComment.git'
+Bundle 'git://github.com/kchmck/vim-coffee-script.git'
+
+set nobackup      " don't create annoying backup files
+set nowritebackup " use normal save behavior (don't create temp files)
+set history=200   " remember 200 lines of history
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
-set laststatus=2  " Always display the status line
-set autoindent
-set showmode
-set splitbelow
-set splitright
-set nowrap
+set laststatus=2  " always display the status line
+set autoindent    " copy previous line indentation on a new line
+set showmode      " show current vim mode
+set splitbelow    " horizontal split should go below
+set splitright    " vertical split should to go the right
+set nowrap        " no automatic line wrapping
 set cc=80         " show a vertical line at 80 columns
+syntax on         " turn on syntax highlighting
 let mapleader=","
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
+filetype plugin indent on  " allow setting indentation based on filetype
 
-filetype plugin indent on
+" set color scheme to Solarized Dark
+set background=dark
+colorscheme solarized
+
 
 augroup vimrcEx
   au!
@@ -56,11 +70,6 @@ if executable("ack")
   set grepprg=ack\ -H\ --nogroup\ --nocolor
 endif
 
-" Color scheme
-colorscheme vividchalk
-highlight NonText guibg=#060606
-highlight Folded  guibg=#0A0A0A guifg=#9090D0
-
 " Numbers
 set number
 set numberwidth=5
@@ -75,12 +84,6 @@ set complete=.,w,t
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
-" Cucumber navigation commands
-autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
-autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
-" :Cuc my text (no quotes) -> runs cucumber scenarios containing "my text"
-command! -nargs=+ Cuc :!ack --no-heading --no-break <q-args> | cut -d':' -f1,2 | xargs bundle exec cucumber --no-color
-
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -93,7 +96,6 @@ endif
 
 cabbrev vimrc edit ~/.vimrc
 cabbrev gvimrc edit ~/.gvimrc
-cabbrev source so ~/.vimrc <bar> so ~/.gvimrc
 
 nmap cp :let @+ = expand('%:p')<CR>
 
@@ -187,11 +189,8 @@ function! CloseOrEmpty()
   end
 endfunction
 
-command! Transpose mark a | s/\v\s*\|\s*/|\r|/g | normal ddkmb`addma
-
 " delete trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
-
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
