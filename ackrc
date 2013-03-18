@@ -4,6 +4,8 @@
 --type-add=ruby=.feature
 --type-set=haml=.haml
 --type-set=sass=.sass
+--type-set=scss=.scss
 --type-set=txt=.txt
+--type-set=coffee=.coffee
 --smart-case
 
