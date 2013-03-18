@@ -3,4 +3,4 @@
   email = bsingh@wegowise.com
 
 [push]
-  default = tracking
+	default = tracking
