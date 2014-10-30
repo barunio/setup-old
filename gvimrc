@@ -31,7 +31,7 @@ vmap   <D-[>   <gv
 smap   <D-[>   <C-O><<Esc>gv
 
 " Command-Shift-F for Ack
-nmap <D-F> :Ack<space>-Q<space>
+nmap <D-F> :Ack<space>
 smap <D-F> <Esc>:Ack<space>
 map! <D-F> <Esc>:Ack<space>
 
@@ -53,7 +53,6 @@ map    <M-Tab>     <C-W>w
 imap   <M-Tab>     <C-O><C-W>w
 map    <M-S-Tab>   <C-W>W
 imap   <M-S-Tab>   <C-O><C-W>W
-
 
 macmenu &File.Close key=<nop>
 map  <silent> <D-w> <Esc>:call CloseOrEmpty()<CR>
