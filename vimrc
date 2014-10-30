@@ -8,15 +8,15 @@ call vundle#rc()
 " let Vundle manage Vundle (required!)
 Bundle 'gmarik/vundle'
 
-Bundle 'git://github.com/kien/ctrlp.vim.git'
-Bundle 'git://github.com/altercation/vim-colors-solarized.git'
-Bundle 'git://github.com/scrooloose/nerdtree.git'
-Bundle 'git://github.com/tpope/vim-surround.git'
-Bundle 'git://github.com/ervandew/supertab.git'
-Bundle 'git://github.com/mileszs/ack.vim.git'
-Bundle 'git://github.com/tpope/vim-repeat.git'
-Bundle 'git://github.com/vim-scripts/tComment.git'
-Bundle 'git://github.com/kchmck/vim-coffee-script.git'
+Bundle 'kien/ctrlp.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-surround'
+Bundle 'ervandew/supertab'
+Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-repeat'
+Bundle 'vim-scripts/tComment'
+Bundle 'kchmck/vim-coffee-script'
 
 set nobackup      " don't create annoying backup files
 set nowritebackup " use normal save behavior (don't create temp files)
