@@ -66,6 +66,9 @@ map  <silent> <D-3> <Esc>:NERDTreeFind<CR>
 map! <silent> <D-3> <Esc>:NERDTreeFind<CR>
 
 " map Ctrl-P to Commant-T
+" also disable built-in Command-T functionality
+macmenu &File.New\ Tab key=<nop>
+macmenu &File.Open\ Tab\.\.\. key=<nop>
 map <D-t> :CtrlP<CR>
 imap <D-t> <ESC>:CtrlP<CR>
 
