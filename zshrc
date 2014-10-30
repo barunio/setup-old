@@ -9,6 +9,9 @@ compinit
 setopt auto_cd
 
 # use macvim as an editor
+# look in the wego code directory when we cd
+cdpath=(~/work/code/)
+
 export EDITOR='mvim -f'
 
 # aliases
