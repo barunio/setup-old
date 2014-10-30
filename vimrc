@@ -41,6 +41,8 @@ set re=1 " Use older regex engine, for Ruby syntax highlighting performance
 
 let mapleader=","
 
+" don't treat dashes as keyword separators, for css class autocompletion
+set iskeyword+=-
 
 " set color scheme to Solarized Dark
 set background=dark
