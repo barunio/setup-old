@@ -67,7 +67,6 @@ setopt cdablevars
 # Enable extended globbing
 setopt EXTENDED_GLOB
 
-export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:$DYLD_LIBRARY_PATH"
 export PATH="./bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 
 # For chruby
