@@ -37,6 +37,8 @@ filetype on         " Enable filetype detection
 filetype indent on  " Enable filetype-specific indenting
 filetype plugin on  " Enable filetype-specific plugins
 
+set re=1 " Use older regex engine, for Ruby syntax highlighting performance
+
 let mapleader=","
 
 
