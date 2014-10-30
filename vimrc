@@ -82,84 +82,18 @@ cabbrev gvimrc edit ~/.gvimrc
 " `cp` copies the current file's location to the clipboard
 nmap cp :let @+ = expand('%:p')<CR>
 
-
-" Display an error message.
-function! s:Warn(msg)
-  echohl ErrorMsg
-  echomsg a:msg
-  echohl NONE
-endfunction
-
-" Thanks to http://vim.wikia.com/wiki/Deleting_a_buffer_without_closing_the_window
-function s:Kwbd(kwbdStage)
-  if(a:kwbdStage == 1)
-    if(!buflisted(winbufnr(0)))
-      bd!
-      return
-    endif
-    let s:kwbdBufNum = bufnr("%")
-    let s:kwbdWinNum = winnr()
-    windo call s:Kwbd(2)
-    execute s:kwbdWinNum . 'wincmd w'
-    let s:buflistedLeft = 0
-    let s:bufFinalJump = 0
-    let l:nBufs = bufnr("$")
-    let l:i = 1
-    while(l:i <= l:nBufs)
-      if(l:i != s:kwbdBufNum)
-        if(buflisted(l:i))
-          let s:buflistedLeft = s:buflistedLeft + 1
-        else
-          if(bufexists(l:i) && !strlen(bufname(l:i)) && !s:bufFinalJump)
-            let s:bufFinalJump = l:i
-          endif
-        endif
-      endif
-      let l:i = l:i + 1
-    endwhile
-    if(!s:buflistedLeft)
-      if(s:bufFinalJump)
-        windo if(buflisted(winbufnr(0))) | execute "b! " . s:bufFinalJump | endif
-      else
-        enew
-        let l:newBuf = bufnr("%")
-        windo if(buflisted(winbufnr(0))) | execute "b! " . l:newBuf | endif
-      endif
-      execute s:kwbdWinNum . 'wincmd w'
-    endif
-    if(buflisted(s:kwbdBufNum) || s:kwbdBufNum == bufnr("%"))
-      execute "bd! " . s:kwbdBufNum
-    endif
-    if(!s:buflistedLeft)
-      set buflisted
-      set bufhidden=delete
-      set buftype=nofile
-      setlocal noswapfile
-    endif
-  else
-    if(bufnr("%") == s:kwbdBufNum)
-      let prevbufvar = bufnr("#")
-      if(prevbufvar > 0 && buflisted(prevbufvar) && prevbufvar != s:kwbdBufNum)
-        b #
-      else
-        bn
-      endif
-    endif
-  endif
-endfunction
-
-command! Kwbd call <SID>Kwbd(1)
-nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
-
 function! CloseOrEmpty()
-  if winnr() == winnr('$')
-    if winnr() == 1
-      execute 'Kwbd'
-    elseif winnr() == 2 && exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1
-      execute 'Kwbd'
-    else
-      execute 'q'
-    end
+  let l:only_one_window = (winnr('$') == 1)
+  let l:only_two_windows = (winnr('$') == 2)
+  let l:is_nerd_tree_window = exists("b:NERDTreeType")
+  let l:nerd_tree_exists = exists("t:NERDTreeBufName")
+
+  if l:is_nerd_tree_window
+    return
+  elseif l:only_one_window
+    execute 'bd'
+  elseif l:only_two_windows && l:nerd_tree_exists
+    execute 'bd'
   else
     execute 'q'
   end
