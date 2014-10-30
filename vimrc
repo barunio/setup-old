@@ -55,10 +55,8 @@ set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·
 
-" Use Ack instead of Grep when available
-if executable("ack")
-  set grepprg=ack\ -H\ --nogroup\ --nocolor
-endif
+" Use Ag (Silver Searcher) instead of Ack (works w/ Ack.vim)
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Numbers
 set number
