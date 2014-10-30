@@ -1,4 +1,3 @@
-filetype off      " disable file type detection
 set nocompatible  " use Vim settings, rather then Vi settings
 
 " set up vundle
@@ -33,30 +32,20 @@ set splitbelow    " horizontal split should go below
 set splitright    " vertical split should to go the right
 set nowrap        " no automatic line wrapping
 set cc=80         " show a vertical line at 80 columns
-syntax on         " turn on syntax highlighting
+syntax enable       " Enable syntax highlighting
+filetype on         " Enable filetype detection
+filetype indent on  " Enable filetype-specific indenting
+filetype plugin on  " Enable filetype-specific plugins
+
 let mapleader=","
 
-filetype plugin indent on  " allow setting indentation based on filetype
 
 " set color scheme to Solarized Dark
 set background=dark
 colorscheme solarized
 
-
-augroup vimrcEx
-  au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-augroup END
+" text files should wrap after 78 characters
+autocmd FileType text setlocal textwidth=78
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -73,19 +62,13 @@ endif
 
 " Numbers
 set number
-set numberwidth=5
-
-" Snippets are activated by Shift+Tab
-let g:snippetsEmu_key = "<S-Tab>"
+set numberwidth=4
 
 " Tab completion options
 set wildmode=list:longest,list:full
 set complete=.,w,t
 
-" Tags
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Treat <li> and <p> tags like the block tags they are
+" Specify a set of tags we want to auto-indent on.
 let g:html_indent_tags = 'li\|p'
 
 map <space> :
