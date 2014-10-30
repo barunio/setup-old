@@ -79,6 +79,7 @@ endif
 cabbrev vimrc edit ~/.vimrc
 cabbrev gvimrc edit ~/.gvimrc
 
+" `cp` copies the current file's location to the clipboard
 nmap cp :let @+ = expand('%:p')<CR>
 
 nmap ri" ci"<Esc><Right>"0P
