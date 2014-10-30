@@ -82,8 +82,6 @@ cabbrev gvimrc edit ~/.gvimrc
 " `cp` copies the current file's location to the clipboard
 nmap cp :let @+ = expand('%:p')<CR>
 
-nmap ri" ci"<Esc><Right>"0P
-
 
 " Display an error message.
 function! s:Warn(msg)
