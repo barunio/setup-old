@@ -79,3 +79,6 @@ if [ -e "$HOME/.zshrc.local" ]; then
 fi
 path=($path $HOME/.wego/bin)
 source "/Users/barunio/.wego/completions/wego.zsh"
+export GOPATH="$HOME/.go"
+export PATH=GOPATH/bin:$PATH
+
