@@ -60,8 +60,8 @@ map! <silent> <D-w> <Esc>:call CloseOrEmpty()<CR>
 
 map  <silent> <D-1> <Esc>:NERDTree<CR>
 map! <silent> <D-1> <Esc>:NERDTree<CR>
-map  <silent> <D-2> <Esc>:call HideNERDTree()<CR>
-map! <silent> <D-2> <Esc>:call HideNERDTree()<CR>
+map  <silent> <D-2> <Esc>:NERDTreeClose<CR>
+map! <silent> <D-2> <Esc>:NERDTreeClose<CR>
 map  <silent> <D-3> <Esc>:NERDTreeFind<CR>
 map! <silent> <D-3> <Esc>:NERDTreeFind<CR>
 
@@ -71,10 +71,3 @@ macmenu &File.New\ Tab key=<nop>
 macmenu &File.Open\ Tab\.\.\. key=<nop>
 map <D-t> :CtrlP<CR>
 imap <D-t> <ESC>:CtrlP<CR>
-
-function HideNERDTree()
-  if exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1
-    execute 'NERDTree | q'
-  end
-endfunction
-
