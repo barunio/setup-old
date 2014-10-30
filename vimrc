@@ -84,11 +84,6 @@ nmap cp :let @+ = expand('%:p')<CR>
 
 nmap ri" ci"<Esc><Right>"0P
 
-map <leader>t: :Tab/:\zs<CR>
-map <leader>t= :Tab/=<CR>
-map <leader>t\ :Tab/<bar><CR>
-map <leader>t, :Tab/,\zs<CR>
-
 
 " Display an error message.
 function! s:Warn(msg)
