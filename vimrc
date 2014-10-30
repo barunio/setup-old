@@ -19,6 +19,7 @@ Bundle 'vim-scripts/tComment'
 Bundle 'kchmck/vim-coffee-script'
 
 set noswapfile
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set nobackup      " don't create annoying backup files
 set nowritebackup " use normal save behavior (don't create temp files)
 set history=200   " remember 200 lines of history
