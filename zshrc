@@ -78,3 +78,5 @@ source '/usr/local/share/chruby/auto.sh'
 if [ -e "$HOME/.zshrc.local" ]; then
   source "$HOME/.zshrc.local"
 fi
+path=($path $HOME/.wego/bin)
+source "/Users/barunio/.wego/completions/wego.zsh"
