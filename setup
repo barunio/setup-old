@@ -8,6 +8,12 @@ HOME = get_home_directory
 TRASH = "#{HOME}/.Trash/dotfiles-#{Time.now.to_i}"
 FileUtils.mkdir(TRASH)
 
+BREW_FORMULAS = %w[
+  git
+  chruby
+  ruby-build
+]
+
 DOTFILES = %w[
   ackrc
   aliases
@@ -21,6 +27,7 @@ DOTFILES = %w[
   zshrc
 ]
 
+install_homebrew_formulas
 install_vim
 symlink_dotfiles
 

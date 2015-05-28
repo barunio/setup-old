@@ -4,6 +4,16 @@ def get_home_directory
   pathmatch[1]
 end
 
+def install_homebrew_formulas
+  raise "Homebrew must be installed" if `which brews` == ''
+  put_heading "Installing and upgrading Homebrew formulas"
+  `brew update`
+  `brew upgrade --all`
+  BREW_FORMULAS.each do |formula|
+    `brew install #{formula}`
+  end
+end
+
 def install_vim
   put_heading "Trashing old .vim directory and installing vundle in a new one"
   move_to_trash File.join(HOME, '.vim')
