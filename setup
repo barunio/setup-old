@@ -12,6 +12,7 @@ BREW_FORMULAS = %w[
   chruby
   git
   memcached
+  postgres
   redis
   ruby-install
 ]
@@ -46,5 +47,7 @@ notify_todos(
   "Add Terminal themes (see README in folder)",
   "Add `mvim` to /usr/local/bin",
   "Enable Terminal usage for GitX",
-  "Install Ruby for Wego via: `cd wegowise` and `install_ruby`"
+  "Install Ruby for Wego via: `cd wegowise` and `install_ruby`",
+  "Download PSequel.app"
+
 )
