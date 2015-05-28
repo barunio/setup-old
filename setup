@@ -35,3 +35,9 @@ puts "Symlinking config files (deleting old ones!)"
   move_to_trash(dest) { |symlink_target| symlink_target == source }
   FileUtils.ln_s(source, dest) unless File.exists?(dest)
 end
+
+puts "Setting up keyboard shortcuts"
+`./keyboard_shortcuts.sh`
+
+puts "\n!! Remember to remap Caps Lock to Control manually via \n"\
+  "     System Preferences > Keyboard > [Modifier Keys button]\n\n"
