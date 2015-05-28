@@ -42,5 +42,8 @@ puts "Cloning Wego repos"
 puts "Setting up keyboard shortcuts"
 `./keyboard_shortcuts.sh`
 
+puts "Defaulting to zsh"
+`chsh -s $(which zsh)`
+
 puts "\n!! Remember to remap Caps Lock to Control manually via \n"\
   "     System Preferences > Keyboard > [Modifier Keys button]\n\n"
