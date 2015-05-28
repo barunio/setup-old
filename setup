@@ -9,8 +9,8 @@ TRASH = "#{HOME}/.Trash/dotfiles-#{Time.now.to_i}"
 FileUtils.mkdir(TRASH)
 
 BREW_FORMULAS = %w[
-  git
   chruby
+  git
   ruby-install
 ]
 
