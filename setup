@@ -11,6 +11,7 @@ FileUtils.mkdir(TRASH)
 BREW_FORMULAS = %w[
   chruby
   git
+  memcached
   ruby-install
 ]
 
@@ -35,6 +36,7 @@ copy_bin_scripts
 run_script(:clone_wegowise, "Cloning wegowise repos")
 run_script(:keyboard_shortcuts, "Setting up keyboard shortcuts")
 run_script(:default_shell, "Defaulting to zsh")
+run_script(:set_startup_services, "Configuring startup services")
 
 notify_todos(
   "Remap Caps Lock -> Control (System Preferences > Keyboard > Modifier Keys)",
