@@ -26,10 +26,10 @@ end
 def install_homebrew_formulas
   raise "Homebrew must be installed" if `which brew` == ''
   put_heading "Installing and upgrading Homebrew formulas"
-  `brew update`
-  `brew upgrade --all`
+  puts `brew update`
+  puts `brew upgrade --all`
   BREW_FORMULAS.each do |formula|
-    `brew install #{formula}`
+    puts `brew install #{formula}`
   end
 end
 
