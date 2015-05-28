@@ -16,6 +16,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-repeat'
 Bundle 'vim-scripts/tComment'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'JazzCore/ctrlp-cmatcher'
 
 set noswapfile
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
