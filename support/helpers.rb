@@ -1,7 +1,6 @@
 def get_home_directory
-  unless pathmatch = PATH.match(/^(\/Users\/[^\/]*)\//)
-    raise ArgumentError, "This git repo must be under your home directory!"
-  end
+  pathmatch = PATH.match(/^(\/Users\/[^\/]*)\//)
+  raise "This git repo must be under your home directory!" unless pathmatch
   pathmatch[1]
 end
 
