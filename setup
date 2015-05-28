@@ -11,7 +11,7 @@ FileUtils.mkdir(TRASH)
 BREW_FORMULAS = %w[
   git
   chruby
-  ruby-build
+  ruby-install
 ]
 
 DOTFILES = %w[
