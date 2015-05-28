@@ -1,49 +1,34 @@
 #!/usr/bin/env ruby
 require 'fileutils'
 require 'open-uri'
+require_relative 'support/helpers'
 
 PATH = FileUtils.pwd
-unless pathmatch = PATH.match(/^(\/Users\/[^\/]*)\//)
-  raise ArgumentError, "you must clone the git repo to some location under your home directory"
-end
-HOME = pathmatch[1]
+HOME = get_home_directory
 TRASH = "#{HOME}/.Trash/dotfiles-#{Time.now.to_i}"
 FileUtils.mkdir(TRASH)
 
-def move_to_trash(object)
-  trash_to = File.join(TRASH, File.basename(object))
-  if File.exists?(object) && File.symlink?(object)
-    target = File.readlink(object)
-    return if block_given? && yield(target)
-    FileUtils.mv(target, trash_to) if File.exists?(target)
-  elsif File.exists?(object)
-    FileUtils.mv(object, trash_to)
-  end
-  FileUtils.rm_f(object) # delete file, symlink or dead symlink
-end
+DOTFILES = %w[
+  ackrc
+  aliases
+  gemrc
+  gitconfig
+  gvimrc
+  rdebugrc
+  rvmrc
+  vimrc
+  zlogin
+  zshrc
+]
 
-puts "trashing old .vim directory and installing vundle in a new one"
-move_to_trash File.join(HOME, '.vim')
-FileUtils.mkdir "#{HOME}/.vim"
-FileUtils.mkdir "#{HOME}/.vim/bundle"
-`git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+install_vim
+symlink_dotfiles
 
-puts "Symlinking config files (deleting old ones!)"
-%w{zshrc aliases zlogin vimrc gvimrc gitconfig ackrc gemrc rvmrc rdebugrc}.each do |dotfile|
-  source = File.join(PATH, "dotfiles", dotfile)
-  dest = File.join(HOME, ".#{dotfile}")
-  move_to_trash(dest) { |symlink_target| symlink_target == source }
-  FileUtils.ln_s(source, dest) unless File.exists?(dest)
-end
+run_script(:clone_wegowise, "Cloning wegowise repos")
+run_script(:keyboard_shortcuts, "Setting up keyboard shortcuts")
+run_script(:default_shell, "Defaulting to zsh")
 
-puts "Cloning Wego repos"
-`./scripts/clone_wegowise.sh`
-
-puts "Setting up keyboard shortcuts"
-`./scripts/keyboard_shortcuts.sh`
-
-puts "Defaulting to zsh"
-`chsh -s $(which zsh)`
-
-puts "\n!! Remember to remap Caps Lock to Control manually via \n"\
-  "     System Preferences > Keyboard > [Modifier Keys button]\n\n"
+notify_todos(
+  "Remap Caps Lock -> Control (System Preferences > Keyboard > Modifier Keys)",
+  "Open Vim and run :VundleInstall"
+)
