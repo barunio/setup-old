@@ -65,7 +65,7 @@ end
 
 def run_script(filename, desc)
   put_heading desc
-  `./scripts/#{filename}.sh`
+  puts `./scripts/#{filename}.sh`
 end
 
 def symlink_dotfiles
