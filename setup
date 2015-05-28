@@ -38,5 +38,7 @@ run_script(:default_shell, "Defaulting to zsh")
 notify_todos(
   "Remap Caps Lock -> Control (System Preferences > Keyboard > Modifier Keys)",
   "Open Vim and run :VundleInstall",
-  "Add Terminal themes (see README in folder)"
+  "Add Terminal themes (see README in folder)",
+  "Add `mvim` to /usr/local/bin",
+  "Enable Terminal usage for GitX"
 )
