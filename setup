@@ -30,6 +30,7 @@ DOTFILES = %w[
 install_homebrew_formulas
 install_vim
 symlink_dotfiles
+copy_bin_scripts
 
 run_script(:clone_wegowise, "Cloning wegowise repos")
 run_script(:keyboard_shortcuts, "Setting up keyboard shortcuts")
@@ -40,5 +41,6 @@ notify_todos(
   "Open Vim and run :VundleInstall",
   "Add Terminal themes (see README in folder)",
   "Add `mvim` to /usr/local/bin",
-  "Enable Terminal usage for GitX"
+  "Enable Terminal usage for GitX",
+  "Install Ruby for Wego via: `cd wegowise` and `install_ruby`"
 )

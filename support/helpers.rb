@@ -1,3 +1,22 @@
+def copy_bin_scripts
+  put_heading "Copy some useful bin scripts"
+  Dir[File.join(PATH, "binscripts/*")].each do |source|
+    filename = File.basename(source)
+    dest = "/usr/local/bin/#{filename}"
+    if File.exists? dest
+      puts "There is already a copy of #{filename}. Overwrite? (y/N)"
+      unless %w[y Y].include? gets.chomp
+        puts " >> Ignoring #{filename}"
+        next
+      end
+      move_to_trash(dest)
+    end
+
+    FileUtils.cp(source, dest)
+    `chmod +x #{dest}`
+  end
+end
+
 def get_home_directory
   pathmatch = PATH.match(/^(\/Users\/[^\/]*)\//)
   raise "This git repo must be under your home directory!" unless pathmatch

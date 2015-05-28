@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+if File.exists? File.join(FileUtils.pwd, ".ruby-version")
+  `brew update`
+  `brew upgrade chruby`
+  `ruby-install ruby #{File.open(".ruby-version", &:readline)}`
+else
+  puts "There is no .ruby-version in this folder"
+end
