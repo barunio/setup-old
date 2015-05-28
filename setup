@@ -30,17 +30,17 @@ FileUtils.mkdir "#{HOME}/.vim/bundle"
 
 puts "Symlinking config files (deleting old ones!)"
 %w{zshrc aliases zlogin vimrc gvimrc gitconfig ackrc gemrc rvmrc rdebugrc}.each do |dotfile|
-  source = File.join(PATH, dotfile)
+  source = File.join(PATH, "dotfiles", dotfile)
   dest = File.join(HOME, ".#{dotfile}")
   move_to_trash(dest) { |symlink_target| symlink_target == source }
   FileUtils.ln_s(source, dest) unless File.exists?(dest)
 end
 
 puts "Cloning Wego repos"
-`./clone_wegowise.sh`
+`./scripts/clone_wegowise.sh`
 
 puts "Setting up keyboard shortcuts"
-`./keyboard_shortcuts.sh`
+`./scripts/keyboard_shortcuts.sh`
 
 puts "Defaulting to zsh"
 `chsh -s $(which zsh)`

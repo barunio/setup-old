@@ -16,5 +16,3 @@ defaults write -app Terminal NSUserKeyEquivalents '{
   "Show Next Tab" = "^\U21e5";
   "Show Previous Tab" = "^$\U21e5";
 }'
-
-
