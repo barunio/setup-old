@@ -36,6 +36,9 @@ puts "Symlinking config files (deleting old ones!)"
   FileUtils.ln_s(source, dest) unless File.exists?(dest)
 end
 
+puts "Cloning Wego repos"
+`./clone_wegowise.sh`
+
 puts "Setting up keyboard shortcuts"
 `./keyboard_shortcuts.sh`
 
