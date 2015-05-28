@@ -12,6 +12,7 @@ BREW_FORMULAS = %w[
   chruby
   git
   memcached
+  redis
   ruby-install
 ]
 
