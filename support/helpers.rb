@@ -5,7 +5,7 @@ def get_home_directory
 end
 
 def install_homebrew_formulas
-  raise "Homebrew must be installed" if `which brews` == ''
+  raise "Homebrew must be installed" if `which brew` == ''
   put_heading "Installing and upgrading Homebrew formulas"
   `brew update`
   `brew upgrade --all`
