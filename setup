@@ -13,6 +13,7 @@ BREW_FORMULAS = %w[
   git
   memcached
   mysql
+  node
   postgres
   redis
   ruby-install
