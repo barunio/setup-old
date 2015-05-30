@@ -50,6 +50,6 @@ notify_todos(
   "Add `mvim` to /usr/local/bin",
   "Enable Terminal usage for GitX",
   "Install Ruby for Wego via: `cd wegowise` and `install_ruby`",
-  "Download PSequel.app and Sequel Pro"
-
+  "Download PSequel.app and Sequel Pro",
+  "Install XCode and Command Line Tools (probably already had to do this)"
 )
