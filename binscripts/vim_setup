@@ -1,0 +1,8 @@
+#!/bin/bash
+
+vim +PluginInstall +qall
+
+CURRENT_DIR = pwd
+cd ~/.vim/bundle/ctrlp-cmatcher
+./install.sh
+cd $(CURRENT_DIR)
