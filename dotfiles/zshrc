@@ -81,7 +81,7 @@ path=($path $HOME/.wego/bin)
 source "/Users/barunio/.wego/completions/wego.zsh"
 
 # CA Root certificates needed for rake deploy tasks
-export SSL_CERT_FILE=/usr/local/etc/certs/cacert.pem
+# export SSL_CERT_FILE=/usr/local/etc/certs/cacert.pem
 
 export GOPATH="$HOME/.go"
 export PATH=GOPATH/bin:$PATH
