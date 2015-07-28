@@ -13,7 +13,6 @@ BREW_FORMULAS = %w[
   chruby
   git
   memcached
-  macvim
   mysql
   node
   postgres
@@ -22,6 +21,7 @@ BREW_FORMULAS = %w[
 ]
 
 BREW_CASK_FORMULAS = %w[
+  macvim
   rowanj-gitx
 ]
 
@@ -43,7 +43,6 @@ install_vim
 symlink_dotfiles
 copy_bin_scripts
 
-run_script(:symlink_mvim_to_applications, "Symlink MacVim to /Applications/")
 run_script(:clone_wegowise, "Cloning wegowise repos")
 run_script(:keyboard_shortcuts, "Setting up keyboard shortcuts")
 run_script(:turn_off_autocorrect, "Turn off autocorrect")
@@ -54,7 +53,6 @@ notify_todos(
   "Remap Caps Lock -> Control (System Preferences > Keyboard > Modifier Keys)",
   "run `vim_setup` from the command line",
   "Add Terminal themes (see README in folder)",
-  "Add `mvim` to /usr/local/bin",
   "Enable Terminal usage for GitX",
   "Install Ruby for Wego via: `cd wegowise` and `install_ruby`",
   "Download PSequel.app and Sequel Pro",
