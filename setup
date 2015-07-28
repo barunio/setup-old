@@ -22,7 +22,9 @@ BREW_FORMULAS = %w[
 
 BREW_CASK_FORMULAS = %w[
   macvim
+  psequel
   rowanj-gitx
+  sequel-pro
 ]
 
 DOTFILES = %w[
@@ -55,6 +57,5 @@ notify_todos(
   "Add Terminal themes (see README in folder)",
   "Enable Terminal usage for GitX",
   "Install Ruby for Wego via: `cd wegowise` and `install_ruby`",
-  "Download PSequel.app and Sequel Pro",
   "Install XCode and Command Line Tools (probably already had to do this)"
 )
