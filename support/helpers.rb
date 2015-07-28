@@ -28,6 +28,7 @@ def install_homebrew_formulas
   put_heading "Installing and upgrading Homebrew formulas"
   puts `brew update`
   puts `brew upgrade --all`
+  puts `brew cleanup`
   BREW_FORMULAS.each do |formula|
     puts `brew install #{formula}`
   end
