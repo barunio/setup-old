@@ -9,6 +9,7 @@ TRASH = "#{HOME}/.Trash/dotfiles-#{Time.now.to_i}"
 FileUtils.mkdir(TRASH)
 
 BREW_FORMULAS = %w[
+  caskroom/cask/brew-cask
   chruby
   git
   memcached
@@ -18,6 +19,10 @@ BREW_FORMULAS = %w[
   postgres
   redis
   ruby-install
+]
+
+BREW_CASK_FORMULAS = %w[
+  rowanj-gitx
 ]
 
 DOTFILES = %w[
