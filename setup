@@ -12,6 +12,7 @@ BREW_FORMULAS = %w[
   chruby
   git
   memcached
+  macvim
   mysql
   node
   postgres
@@ -37,6 +38,7 @@ install_vim
 symlink_dotfiles
 copy_bin_scripts
 
+run_script(:symlink_mvim_to_applications, "Symlink MacVim to /Applications/")
 run_script(:clone_wegowise, "Cloning wegowise repos")
 run_script(:keyboard_shortcuts, "Setting up keyboard shortcuts")
 run_script(:turn_off_autocorrect, "Turn off autocorrect")
