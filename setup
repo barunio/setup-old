@@ -63,5 +63,6 @@ notify_todos(
   "Add Terminal themes (see README in folder)",
   "Enable Terminal usage for GitX",
   "Install Ruby for Wego via: `cd wegowise` and `install_ruby`",
-  "Install XCode and Command Line Tools (probably already had to do this)"
+  "Install XCode and Command Line Tools (probably already had to do this)",
+  "Install Zooom/2 (license key is in dropbox)"
 )
