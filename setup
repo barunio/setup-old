@@ -30,6 +30,7 @@ BREW_CASK_FORMULAS = %w[
   psequel
   rowanj-gitx
   sequel-pro
+  sketch
 ]
 
 DOTFILES = %w[
