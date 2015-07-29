@@ -23,6 +23,7 @@ BREW_FORMULAS = %w[
 
 BREW_CASK_FORMULAS = %w[
   1password
+  dropbox
   macvim
   psequel
   rowanj-gitx
