@@ -25,6 +25,7 @@ BREW_CASK_FORMULAS = %w[
   1password
   dropbox
   google-chrome
+  hipchat
   macvim
   psequel
   rowanj-gitx
