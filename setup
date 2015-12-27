@@ -67,6 +67,7 @@ run_script(:set_startup_services, "Configuring startup services")
 
 notify_todos(
   "Remap Caps Lock -> Control (System Preferences > Keyboard > Modifier Keys)",
+  "Enable 3-finger drag (System Preferences > Accessibility > Mouse & Trackpad)",
   "run `vim_setup` from the command line",
   "Add Terminal themes (see README in folder)",
   "Enable Terminal usage for GitX",
