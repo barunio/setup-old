@@ -24,14 +24,21 @@ BREW_FORMULAS = %w[
 
 BREW_CASK_FORMULAS = %w[
   1password
+  appdelete
+  arq
   dropbox
+  fantastical
+  firefox
+  flux
   google-chrome
   hipchat
   macvim
   psequel
+  python
   rowanj-gitx
   sequel-pro
   sketch
+  sqlite
 ]
 
 DOTFILES = %w[
