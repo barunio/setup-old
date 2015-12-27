@@ -72,5 +72,6 @@ notify_todos(
   "Enable Terminal usage for GitX",
   "Install Ruby for Wego via: `cd wegowise` and `install_ruby`",
   "Install XCode and Command Line Tools (probably already had to do this)",
-  "Install Zooom/2 (license key is in dropbox)"
+  "Install Zooom/2 (license key is in dropbox)",
+  "Install MS Office with custom options (from Wego Dropbox)",
 )
