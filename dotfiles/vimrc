@@ -104,8 +104,17 @@ function! CloseOrEmpty()
   end
 endfunction
 
-" delete trailing whitespace on save
+" delete trailing whitespace each line on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" delete empty lines at end of file on save
+function TrimEndLines()
+    let save_cursor = getpos(".")
+    :silent! %s#\($\n\s*\)\+\%$##
+    call setpos('.', save_cursor)
+endfunction
+
+au BufWritePre * call TrimEndLines()
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
