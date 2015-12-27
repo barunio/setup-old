@@ -82,6 +82,32 @@ def run_script(filename, desc)
   puts `./scripts/#{filename}.sh`
 end
 
+def set_up_ssh_keys
+  return if ssh_key_active?
+
+  put_heading 'Setting up SSH keys'
+  puts "Generate new SSH keys for this machine? (y/N)"
+  unless %w[y Y].include? gets.chomp
+    raise "Missing SSH Keys -- either create or copy into ~/.ssh"
+  end
+  `ssh-keygen -t rsa -b 4096 -C "barunio@gmail.com" -f "#{HOME}/.ssh/id_rsa"`
+
+  # Restart ssh-agent and verify key is set up
+  `pkill ssh-agent`
+  `ssh-add ~/.ssh/id_rsa`
+  raise "SSH key is not active; unknown issue" unless ssh_key_active?
+
+  `pbcopy < ~/.ssh/id_rsa.pub`
+  puts "\n\n >> The new SSH public key has been copied to the clipboard."
+  puts " >> Now, add it to Github."
+  puts " >> Press any key to continue."
+  gets
+end
+
+def ssh_key_active?
+  `ssh-add -l` =~ /4096 SHA256:/
+end
+
 def symlink_dotfiles
   put_heading "Symlinking config files (deleting old ones!)"
   DOTFILES.each do |dotfile|
