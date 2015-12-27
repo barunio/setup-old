@@ -1,3 +1,5 @@
 #!/bin/bash
 
-chsh -s $(which zsh)
+if [ "$SHELL" != "$(which zsh)" ]; then
+  chsh -s $(which zsh)
+fi
