@@ -34,7 +34,7 @@ def install_homebrew_formulas
     puts `brew install #{formula}`
   end
   BREW_CASK_FORMULAS.each do |formula|
-    puts `brew cask install #{formula}`
+    puts `brew cask install #{formula} --appdir=/Applications`
   end
 end
 
