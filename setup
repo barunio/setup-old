@@ -28,13 +28,13 @@ BREW_CASK_FORMULAS = %w[
   dropbox
   fantastical
   firefox
+  fork
   flux
   google-chrome
   hipchat
   macvim
   psequel
   python
-  rowanj-gitx
   sequel-pro
   sketch
   sqlite
@@ -71,7 +71,6 @@ notify_todos(
   "Enable 3-finger drag (System Preferences > Accessibility > Mouse & Trackpad)",
   "run `vim_setup` from the command line",
   "Add Terminal themes (see README in folder)",
-  "Enable Terminal usage for GitX",
   "Install Ruby for Wego via: `cd wegowise` and `install_ruby`",
   "Install XCode and Command Line Tools (probably already had to do this)",
   "Install Zooom/2 (license key is in dropbox)",
