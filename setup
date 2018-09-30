@@ -10,7 +10,6 @@ FileUtils.mkdir(TRASH)
 
 BREW_FORMULAS = %w[
   ag
-  caskroom/cask/brew-cask
   chruby
   git
   memcached
