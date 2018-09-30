@@ -32,6 +32,7 @@ BREW_CASK_FORMULAS = %w[
   flux
   geekbench
   google-chrome
+  google-drive-file-stream
   hipchat
   licecap
   macvim
