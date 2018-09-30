@@ -1,5 +1,8 @@
 #!/bin/bash
 
+printf "\nWhen running this script for the first time, there will be a 'cannot find colorscheme' warning and may also see Python warnings from Ctrl-P.\n"
+printf "\nThat's ok, running the script a second time should not result in these warnings.\n\n"
+
 vim +PluginInstall +qall
 
 CURRENT_DIR=`pwd`
