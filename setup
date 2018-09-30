@@ -38,6 +38,7 @@ BREW_CASK_FORMULAS = %w[
   psequel
   sequel-pro
   sketch
+  slack
   spotify
   vlc
   zoom
