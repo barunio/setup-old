@@ -2,8 +2,11 @@
 require 'fileutils'
 
 if File.exists? File.join(FileUtils.pwd, ".ruby-version")
+  puts "Running brew update"
   `brew update`
+  puts "Running brew upgrade chruby"
   `brew upgrade chruby`
+  puts "Running ruby-install"
   `ruby-install ruby #{File.open(".ruby-version", &:readline)}`
 else
   puts "There is no .ruby-version in this folder"
