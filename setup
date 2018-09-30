@@ -30,6 +30,7 @@ BREW_CASK_FORMULAS = %w[
   firefox
   fork
   flux
+  geekbench
   google-chrome
   hipchat
   macvim
