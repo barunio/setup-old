@@ -23,8 +23,12 @@ def get_home_directory
   pathmatch[1]
 end
 
+def homebrew_installed?
+  `command -v brew` != ''
+end
+
 def install_homebrew_formulas
-  raise "Homebrew must be installed" if `which brew` == ''
+  raise "Homebrew must be installed" unless homebrew_installed?
   put_heading "Installing and upgrading Homebrew formulas"
   puts `brew update`
   puts `brew upgrade --all`
@@ -71,6 +75,15 @@ def notify_todos(*strings)
   puts "\n\n#{'='*80}\n=#{' '*37}TO DO#{' '*36}=\n#{'='*80}\n\n"
   strings.each { |str| puts "  * #{str}" }
   puts "\n\n"
+end
+
+def prompt_homebrew_installation
+  return if homebrew_installed?
+
+  put_heading "Homebrew needs to be installed before continuing"
+  puts '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+  puts "\n\n"
+  exit
 end
 
 def put_heading(str)

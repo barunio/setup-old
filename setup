@@ -55,6 +55,7 @@ DOTFILES = %w[
 ]
 
 set_up_ssh_keys
+prompt_homebrew_installation
 install_homebrew_formulas
 install_vim
 symlink_dotfiles
