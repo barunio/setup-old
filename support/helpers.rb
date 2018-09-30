@@ -55,7 +55,7 @@ def install_vim
   move_to_trash File.join(HOME, '.vim')
   FileUtils.mkdir vimdir
   FileUtils.mkdir "#{HOME}/.vim/bundle"
-  `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+  `git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 end
 
 def move_to_trash(object)

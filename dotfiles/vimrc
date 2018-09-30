@@ -1,22 +1,28 @@
 set nocompatible  " use Vim settings, rather then Vi settings
 
-" set up vundle
-set rtp+=~/.vim/bundle/vundle/ " add to run time path
-call vundle#rc()
 
-" let Vundle manage Vundle (required!)
-Bundle 'gmarik/vundle'
 
-Bundle 'kien/ctrlp.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-surround'
-Bundle 'ervandew/supertab'
-Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-repeat'
-Bundle 'vim-scripts/tComment'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'JazzCore/ctrlp-cmatcher'
+" Setup up Vundle
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'ervandew/supertab'
+Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'vim-scripts/tComment'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'JazzCore/ctrlp-cmatcher'
+
+" All of your Plugins must be added before the following line
+call vundle#end() " required
 
 set noswapfile
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
