@@ -37,6 +37,7 @@ BREW_CASK_FORMULAS = %w[
   psequel
   sequel-pro
   sketch
+  spotify
 ]
 
 DOTFILES = %w[
