@@ -35,10 +35,8 @@ BREW_CASK_FORMULAS = %w[
   hipchat
   macvim
   psequel
-  python
   sequel-pro
   sketch
-  sqlite
 ]
 
 DOTFILES = %w[
