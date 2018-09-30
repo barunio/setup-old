@@ -2,7 +2,7 @@
 
 vim +PluginInstall +qall
 
-CURRENT_DIR = pwd
+CURRENT_DIR=`pwd`
 cd ~/.vim/bundle/ctrlp-cmatcher
 ./install.sh
-cd $(CURRENT_DIR)
+cd $CURRENT_DIR
