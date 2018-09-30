@@ -45,7 +45,7 @@ map w <C-w>
 map w- <C-w>K<C-w>_
 
 " Simpler mapping to get into normal mode from insert mode
-macmenu &Tools.Spelling.To\ Next\ error key=<nop>
+macmenu &Tools.Spelling.To\ Next\ Error key=<nop>
 map! <D-;> <Esc><Right>
 
 " Command-o to open a file
