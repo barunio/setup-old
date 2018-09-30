@@ -78,7 +78,7 @@ if [ -e "$HOME/.zshrc.local" ]; then
   source "$HOME/.zshrc.local"
 fi
 path=($path $HOME/.wego/bin)
-source "/Users/barunio/.wego/completions/wego.zsh"
+source "~/.wego/completions/wego.zsh"
 
 # CA Root certificates needed for rake deploy tasks
 # export SSL_CERT_FILE=/usr/local/etc/certs/cacert.pem
