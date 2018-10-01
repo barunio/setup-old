@@ -31,6 +31,7 @@ BREW_CASK_FORMULAS = %w[
   fork
   flux
   geekbench
+  google-backup-and-sync
   google-chrome
   google-drive-file-stream
   hipchat
