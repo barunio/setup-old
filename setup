@@ -21,10 +21,12 @@ BREW_FORMULAS = %w[
   ruby-install
 ]
 
+# quicklook plugins from https://github.com/sindresorhus/quick-look-plugins
 BREW_CASK_FORMULAS = %w[
   1password
   appdelete
   arq
+  betterzip
   dropbox
   fantastical
   firefox
@@ -38,11 +40,18 @@ BREW_CASK_FORMULAS = %w[
   licecap
   macvim
   psequel
+  qlcolorcode
+  qlimagesize
+  qlmarkdown
+  qlstephen
+  qlvideo
+  quicklook-json
   sequel-pro
   sketch
   slack
   spotify
   vlc
+  webpquicklook
   zoomus
 ]
 
