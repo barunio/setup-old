@@ -43,7 +43,7 @@ BREW_CASK_FORMULAS = %w[
   slack
   spotify
   vlc
-  zoom
+  zoomus
 ]
 
 DOTFILES = %w[
