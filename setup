@@ -91,5 +91,6 @@ notify_todos(
   "Install MS Office with custom options (from Wego Dropbox)",
   "Add Wegowise.pem (in Wego Dropbox, Technical > EC2) to ~/.ssh",
   "If new SSH key was generated, add it to the WegoWise Chef repo",
-  "Install gotomeeting (not available via cask; make sure that is still true)"
+  "Install gotomeeting (not available via cask; make sure that is still true)",
+  "Download MS Office by going to Office 365 via appfolio.okta.com"
 )
