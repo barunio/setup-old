@@ -32,6 +32,7 @@ BREW_CASK_FORMULAS = %w[
   firefox
   fork
   flux
+  fujitsu-scansnap-manager-ix500
   geekbench
   google-backup-and-sync
   google-chrome
