@@ -20,6 +20,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-scripts/tComment'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'JazzCore/ctrlp-cmatcher'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'maxmellon/vim-jsx-pretty'
 
 " All of your Plugins must be added before the following line
 call vundle#end() " required
@@ -38,7 +40,7 @@ set showmode      " show current vim mode
 set splitbelow    " horizontal split should go below
 set splitright    " vertical split should to go the right
 set nowrap        " no automatic line wrapping
-set cc=80         " show a vertical line at 80 columns
+set cc=80,120         " show a vertical line at 80 columns
 syntax enable       " Enable syntax highlighting
 filetype on         " Enable filetype detection
 filetype indent on  " Enable filetype-specific indenting

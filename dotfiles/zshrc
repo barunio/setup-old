@@ -10,9 +10,10 @@ setopt auto_cd
 
 # use macvim as an editor
 # look in the wego code directory when we cd
-cdpath=(~/work/code/)
+cdpath=(~/work/code/ ~/work/code/apm_bundle/apps/)
 
-export EDITOR='mvim -f'
+# export EDITOR='mvim -f'
+export EDITOR='code'
 
 # aliases
 if [ -e "$HOME/.aliases" ]; then
@@ -85,5 +86,10 @@ source "~/.wego/completions/wego.zsh"
 
 export GOPATH="$HOME/.go"
 export PATH=GOPATH/bin:$PATH
+
+# Allow trusted binstubs. Run `mkdir .git/safe` to trust a project's binstubs.
+PATH=.git/safe/../../bin:$PATH
+eval "$(nodenv init -)"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 export PGDATA="/usr/local/var/postgres/data"
