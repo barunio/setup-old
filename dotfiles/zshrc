@@ -86,3 +86,4 @@ source "~/.wego/completions/wego.zsh"
 export GOPATH="$HOME/.go"
 export PATH=GOPATH/bin:$PATH
 
+export PGDATA="/usr/local/var/postgres/data"

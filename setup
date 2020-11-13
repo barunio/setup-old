@@ -76,23 +76,24 @@ install_vim
 symlink_dotfiles
 copy_bin_scripts
 
-run_script(:clone_wegowise, "Cloning wegowise repos")
-run_script(:keyboard_shortcuts, "Setting up keyboard shortcuts")
-run_script(:turn_off_autocorrect, "Turn off autocorrect")
-run_script(:default_shell, "Defaulting to zsh")
-run_script(:set_startup_services, "Configuring startup services")
+run_script(:clone_wegowise, 'Cloning wegowise repos')
+run_script(:keyboard_shortcuts, 'Setting up keyboard shortcuts')
+run_script(:turn_off_autocorrect, 'Turn off autocorrect')
+run_script(:default_shell, 'Defaulting to zsh')
+run_script(:set_startup_services, 'Configuring startup services')
+run_script(:setup_postgres, 'Creating postgres data folder')
 
 notify_todos(
-  "Install Firefox extensions: uBlock Origin, 1Password",
-  "Remap Caps Lock -> Control (System Preferences > Keyboard > Modifier Keys)",
-  "Enable 3-finger drag (System Preferences > Accessibility > Mouse & Trackpad)",
-  "run `vim_setup` from the command line",
-  "Add Terminal themes (see README in folder)",
-  "Install Ruby for Wego via: `cd wegowise` and `install_ruby`",
-  "Install MS Office with custom options (from Wego Dropbox)",
-  "Add Wegowise.pem (in Wego Dropbox, Technical > EC2) to ~/.ssh",
-  "If new SSH key was generated, add it to the WegoWise Chef repo",
-  "Install gotomeeting (not available via cask; make sure that is still true)",
-  "Download MS Office by going to Office 365 via appfolio.okta.com",
+  'Install Firefox extensions: uBlock Origin, 1Password',
+  'Remap Caps Lock -> Control (System Preferences > Keyboard > Modifier Keys)',
+  'Enable 3-finger drag (System Preferences > Accessibility > Mouse & Trackpad)',
+  'run `vim_setup` from the command line',
+  'Add Terminal themes (see README in folder)',
+  'Install Ruby for Wego via: `cd wegowise` and `install_ruby`',
+  'Install MS Office with custom options (from Wego Dropbox)',
+  'Add Wegowise.pem (in Wego Dropbox, Technical > EC2) to ~/.ssh',
+  'If new SSH key was generated, add it to the WegoWise Chef repo',
+  'Install gotomeeting (not available via cask; make sure that is still true)',
+  'Download MS Office by going to Office 365 via appfolio.okta.com',
   "Make sure MySQL is working. See the MySQL Readme if it isn't"
 )
