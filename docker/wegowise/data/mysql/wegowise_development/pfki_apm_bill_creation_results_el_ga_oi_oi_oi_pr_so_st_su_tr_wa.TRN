@@ -1,0 +1,2 @@
+TYPE=TRIGGERNAME
+trigger_table=apm_bill_creation_results

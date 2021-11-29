@@ -1,0 +1,2 @@
+# look in the code directory when we cd, and in the apm_bundle apps directory
+cdpath=(~/src/ ~/src/apm_bundle/apps/)

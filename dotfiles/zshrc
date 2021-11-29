@@ -93,3 +93,6 @@ eval "$(nodenv init -)"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 export PGDATA="/usr/local/var/postgres/data"
+
+export NPM_TOKEN=bnBtLXJlYWQtb25seS0yOlEzaTEmN2pZREU3R2NGdA==
+export GITHUB_NPM_TOKEN=514b0eb9d15b234a2a4bcc4285059adffb8d9a4b

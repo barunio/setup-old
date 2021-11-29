@@ -1,0 +1,96 @@
+#!/usr/bin/env ruby
+require "fileutils"
+require "open-uri"
+require_relative "support/helpers"
+
+PATH = FileUtils.pwd
+HOME = get_home_directory
+TRASH = "#{HOME}/.Trash/dotfiles-#{Time.now.to_i}"
+FileUtils.mkdir(TRASH)
+
+BREW_FORMULAS = %w[
+  istat-menus
+  pv
+]
+
+# quicklook plugins from https://github.com/sindresorhus/quick-look-plugins
+BREW_CASK_FORMULAS = %w[
+  appdelete
+  arq
+  betterzip
+  brave-browser
+  daisydisk
+  dropbox
+  fantastical
+  fork
+  flux
+  fujitsu-scansnap-home
+  geekbench
+  gemini
+  google-backup-and-sync
+  google-chrome
+  google-drive-file-stream
+  idrive
+  htop
+  licecap
+  macvim
+  psequel
+  qlcolorcode
+  qlimagesize
+  qlmarkdown
+  qlstephen
+  qlvideo
+  quicklook-json
+  spotify
+  vlc
+  webpquicklook
+]
+
+DOTFILES = %w[
+  ackrc
+  aliases
+  gemrc
+  gitconfig
+  gvimrc
+  rdebugrc
+  rvmrc
+  vimrc
+  zlogin
+  zshrc
+]
+
+OHMYZSH_FILES = %w[
+  aliases
+  cdpath
+]
+
+# set_up_ssh_keys
+# prompt_homebrew_installation
+# install_homebrew_formulas
+symlink_ohmyzsh_files
+# symlink_dotfiles
+# copy_bin_scripts
+
+# run_script(:clone_wegowise, 'Cloning wegowise repos')
+# run_script(:keyboard_shortcuts, "Setting up keyboard shortcuts")
+# run_script(:turn_off_autocorrect, "Turn off autocorrect")
+# run_script(:default_shell, "Defaulting to zsh")
+# run_script(:set_startup_services, 'Configuring startup services')
+# run_script(:setup_postgres, 'Creating postgres data folder')
+
+notify_todos(
+  "Open the Quicklook files since they are unsigned. Find them in ~/Library/QuickLook, Show Package Contents, then Contents > MacOS > file and Open",
+  "Install Firefox extensions: uBlock Origin, 1Password",
+  "Remap Caps Lock -> Control (System Preferences > Keyboard > Modifier Keys)",
+  "Enable 3-finger drag (System Preferences > Accessibility > Mouse & Trackpad)",
+  "run `vim_setup` from the command line",
+  "Add Terminal themes (see README in folder)",
+  "Install Ruby for Wego via: `cd wegowise` and `install_ruby`",
+  "Install MS Office with custom options (from Wego Dropbox)",
+  "Add Wegowise.pem (in Wego Dropbox, Technical > EC2) to ~/.ssh",
+  "If new SSH key was generated, add it to the WegoWise Chef repo",
+  "Install gotomeeting (not available via cask; make sure that is still true)",
+  "Download MS Office by going to Office 365 via appfolio.okta.com",
+  "Make sure MySQL is working. See the MySQL Readme if it isn't",
+  "Set Finder to show hidden files (on Catalina, Cmd+Shift+."
+)

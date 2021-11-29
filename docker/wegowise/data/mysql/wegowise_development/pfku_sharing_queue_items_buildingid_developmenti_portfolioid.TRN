@@ -1,0 +1,2 @@
+TYPE=TRIGGERNAME
+trigger_table=sharing_queue_items

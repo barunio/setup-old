@@ -1,0 +1,4 @@
+alias redis='redis-server'
+alias gcp='git cherry-pick'
+alias test='HEADLESS=false be ruby -Itest'
+alias apicops='be rubocop -c .rubocop-api.yml engines/*/app/api gems/*/app/api app/api --only API --cache false'
