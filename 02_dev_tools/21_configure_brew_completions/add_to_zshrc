@@ -1,0 +1,9 @@
+# Adds Homebrew completions
+# https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+fi
+

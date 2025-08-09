@@ -1,5 +1,16 @@
 alias redis='redis-server'
+
+# alias gco='git checkout-tracking-remote'
+# # Use the same autocompletion for this as we do for git checkout
+# # Should be able to do this via `__git_complete` but I couldn't get that working
+# _git_checkout_tracking_remote() { _git_checkout }
+
+alias gco='git checkout'
 alias gcp='git cherry-pick'
-alias test='HEADLESS=false be ruby -Itest'
-alias apicops='be rubocop -c .rubocop-api.yml engines/*/app/api gems/*/app/api --only API/Endpoints,API/Resources --cache false'
-alias migrate='brake db:migrate RAILS_ENV=test'
+# alias test='HEADLESS=false MAX_WAIT_TIME=10 test_launcher'
+# alias apicops='be rubocop -c .rubocop-api.yml engines/*/app/api gems/*/app/api --only API/Endpoints,API/Resources --cache false'
+# alias migrate='brake db:migrate RAILS_ENV=test'
+# alias reset_db_for_tests='brake db:drop db:create db:migrate RAILS_ENV=test'
+# alias fetch='git fetch origin refs/heads/$(git rev-parse --abbrev-ref HEAD):refs/remotes/origin/$(git rev-parse --abbrev-ref HEAD)'
+
+# alias ci='open_circleci'

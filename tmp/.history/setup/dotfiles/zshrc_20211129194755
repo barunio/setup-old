@@ -6,37 +6,37 @@ autoload -U compinit
 compinit
 
 # automatically enter directories without cd
-# setopt auto_cd
+setopt auto_cd
 
 # use macvim as an editor
 # look in the wego code directory when we cd
-cdpath=(~/work/code/)
+cdpath=(~/work/code/ ~/work/code/apm_bundle/apps/)
 
 # export EDITOR='mvim -f'
-export EDITOR='cursor'
+export EDITOR='code'
 
 # aliases
 if [ -e "$HOME/.aliases" ]; then
   source "$HOME/.aliases"
 fi
 
-# # vi mode
-# bindkey -v
-# bindkey "^F" vi-cmd-mode
-# bindkey jj vi-cmd-mode
+# vi mode
+bindkey -v
+bindkey "^F" vi-cmd-mode
+bindkey jj vi-cmd-mode
 
-# # use incremental search
-# bindkey "^R" history-incremental-search-backward
+# use incremental search
+bindkey "^R" history-incremental-search-backward
 
-# # add some readline keys back
-# bindkey "^A" beginning-of-line
-# bindkey "^E" end-of-line
+# add some readline keys back
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
 
-# # handy keybindings
-# bindkey "^P" history-search-backward
-# bindkey "^Y" accept-and-hold
-# bindkey "^N" insert-last-word
-# bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
+# handy keybindings
+bindkey "^P" history-search-backward
+bindkey "^Y" accept-and-hold
+bindkey "^N" insert-last-word
+bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
 # expand functions in the prompt
 setopt prompt_subst
@@ -70,29 +70,29 @@ setopt EXTENDED_GLOB
 
 export PATH="./bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 
-# # For chruby
-# source /usr/local/share/chruby/chruby.sh
-# source /usr/local/share/chruby/auto.sh
+# For chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 # local config
 if [ -e "$HOME/.zshrc.local" ]; then
   source "$HOME/.zshrc.local"
 fi
-# path=($path $HOME/.wego/bin)
-# source "~/.wego/completions/wego.zsh"
+path=($path $HOME/.wego/bin)
+source "~/.wego/completions/wego.zsh"
 
 # CA Root certificates needed for rake deploy tasks
 # export SSL_CERT_FILE=/usr/local/etc/certs/cacert.pem
 
-# export GOPATH="$HOME/.go"
-# export PATH=GOPATH/bin:$PATH
+export GOPATH="$HOME/.go"
+export PATH=GOPATH/bin:$PATH
 
 # Allow trusted binstubs. Run `mkdir .git/safe` to trust a project's binstubs.
-# PATH=.git/safe/../../bin:$PATH
-# eval "$(nodenv init -)"
-# export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+PATH=.git/safe/../../bin:$PATH
+eval "$(nodenv init -)"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
-# export PGDATA="/usr/local/var/postgres/data"
+export PGDATA="/usr/local/var/postgres/data"
 
-# export NPM_TOKEN=bnBtLXJlYWQtb25seS0yOlEzaTEmN2pZREU3R2NGdA==
-# export GITHUB_NPM_TOKEN=514b0eb9d15b234a2a4bcc4285059adffb8d9a4b
+export NPM_TOKEN=bnBtLXJlYWQtb25seS0yOlEzaTEmN2pZREU3R2NGdA==
+export GITHUB_NPM_TOKEN=514b0eb9d15b234a2a4bcc4285059adffb8d9a4b

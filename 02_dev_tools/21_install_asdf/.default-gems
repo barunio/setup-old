@@ -1,0 +1,5 @@
+bundler 2.2.17
+rails
+foreman
+test_launcher
+rubocop
