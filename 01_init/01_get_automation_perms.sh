@@ -1,4 +1,4 @@
-# This script ensures we have system events and assistive access permissions 
+# This script ensures we have system events and assistive access permissions
 # by enabling Dark mode in System Preferences
 source "$(dirname "$0")/../util/self_automation_bless.sh"
 
@@ -18,21 +18,38 @@ run() {
   # Test permissions by enabling dark mode
   self_automation_bless
   osascript -e '
+    -- Turn off "Scroll direction: Natural" in macOS Ventura/Sonoma/Sequoia
+    -- Requires: System Settings to be closed, Accessibility > Enable AppleScript control of your Mac turned on
+
     with timeout of 30 seconds
-      tell application "System Preferences"
-        activate
-        set current pane to pane "com.apple.preference.general"
-      end tell
+      tell application "System Settings" to activate
 
       tell application "System Events"
-        repeat until exists of checkbox "Dark" of window "General" of application process "System Preferences"
+        -- Wait for System Settings to load
+        repeat until exists window "System Settings" of application process "System Settings"
           delay 0.1
         end repeat
 
-        click checkbox "Dark" of window "General" of application process "System Preferences"
+        tell application process "System Settings"
+          -- Navigate to Trackpad
+          click menu item "Trackpad" of menu "View" of menu bar item "View" of menu bar 1
+
+          delay 0.5
+
+          -- Select "Scroll & Zoom" tab
+          click radio button "Scroll & Zoom" of tab group 1 of group 1 of window "Trackpad"
+
+          delay 0.5
+
+          -- Uncheck "Scroll direction: Natural" if it's checked
+          set theCheckbox to checkbox "Scroll direction: Natural" of tab group 1 of group 1 of window "Trackpad"
+          if value of theCheckbox as boolean is true then
+            click theCheckbox
+          end if
+        end tell
       end tell
 
-      tell application "System Preferences" to quit
+      tell application "System Settings" to quit
     end timeout
-  '
+    '
 }
