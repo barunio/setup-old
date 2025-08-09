@@ -25,8 +25,12 @@ brew update
 echo_primary "Installing dev tools and printer drivers..."
 ./run_scripts.sh 02_dev_tools 02_k8s 02_printer_drivers
 
-echo_primary "Creating an alias on the Desktop to the final setup steps..."
-ln -sf $(realpath ./02_finish_setup.command) ~/Desktop/Finish\ AppFolio\ Setup
+
+export name="Barun Singh"
+export email="barunio@gmail.com"
+
+echo_primary "Configuring git..."
+./run_scripts.sh 05_git_configuration
 
 echo
 echo_primary "Setup completed successfully, and some final steps for the end user were linked on the desktop."
