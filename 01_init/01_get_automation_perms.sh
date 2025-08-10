@@ -18,30 +18,23 @@ run() {
   # Test permissions by enabling dark mode
   self_automation_bless
   osascript -e '
-    -- Turn off "Scroll direction: Natural" in macOS Ventura/Sonoma/Sequoia
-    -- Requires: System Settings to be closed, Accessibility > Enable AppleScript control of your Mac turned on
-
     with timeout of 30 seconds
       tell application "System Settings" to activate
 
       tell application "System Events"
-        -- Wait for System Settings to load
         repeat until exists window "System Settings" of application process "System Settings"
           delay 0.1
         end repeat
 
         tell application process "System Settings"
-          -- Navigate to Trackpad
           click menu item "Trackpad" of menu "View" of menu bar item "View" of menu bar 1
 
           delay 0.5
 
-          -- Select "Scroll & Zoom" tab
           click radio button "Scroll & Zoom" of tab group 1 of group 1 of window "Trackpad"
 
           delay 0.5
 
-          -- Uncheck "Scroll direction: Natural" if it's checked
           set theCheckbox to checkbox "Scroll direction: Natural" of tab group 1 of group 1 of window "Trackpad"
           if value of theCheckbox as boolean is true then
             click theCheckbox
@@ -51,5 +44,5 @@ run() {
 
       tell application "System Settings" to quit
     end timeout
-    '
+  '
 }
